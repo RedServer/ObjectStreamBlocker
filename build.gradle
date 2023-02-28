@@ -44,8 +44,8 @@ tasks.withType(JavaCompile).configureEach {
 
 jar {
     manifest {
-        attributes 'FMLCorePluginContainsFMLMod': 'true'
-        attributes 'FMLCorePlugin': 'mods.example.LoadingPlugin'
+        attributes 'FMLCorePluginContainsFMLMod': 'false' // TODO: Not a mod
+        attributes 'FMLCorePlugin': 'me.theandrey.objectstream.asm.LoadingPlugin'
     }
 }
 
