@@ -4,6 +4,8 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
+import javax.annotation.Nullable;
+import me.theandrey.objectstream.Config;
 import net.minecraft.launchwrapper.IClassTransformer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,7 +32,11 @@ public class ObjectInputStreamTransformer implements IClassTransformer {
     }
 
     @Override
-    public byte[] transform(String name, String transformedName, byte[] bytes) {
+    public byte[] transform(String name, String transformedName, @Nullable byte[] bytes) {
+        if (bytes == null || bytes.length == 0 || Config.excludeClass.contains(name)) {
+            return bytes;
+        }
+
         ClassNode node = ASMHelper.readClass(bytes);
 
         List<MethodNode> unsafeMethods = scanMethods(node);

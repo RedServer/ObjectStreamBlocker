@@ -1,11 +1,17 @@
 package me.theandrey.objectstream.asm;
 
+import java.io.File;
 import java.util.Map;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
+import me.theandrey.objectstream.Config;
 
 @IFMLLoadingPlugin.SortingIndex(2000)
 @IFMLLoadingPlugin.TransformerExclusions("me.theandrey.objectstream.asm.")
 public class LoadingPlugin implements IFMLLoadingPlugin {
+
+    public LoadingPlugin() {
+        Config.load(new File("config/ObjectStreamBlocker.cfg"));
+    }
 
     @Override
     public String[] getASMTransformerClass() {
