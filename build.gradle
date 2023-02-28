@@ -1,0 +1,60 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = 'forge'
+            url = getProperty('minecraftforge.repository.url')
+        }
+    }
+    dependencies {
+        classpath('com.anatawa12.forge:ForgeGradle:1.2-1.0.+') {
+            changing = true
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'forge'
+apply plugin: 'idea'
+
+// Project settings
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
+
+idea {
+    module {
+        inheritOutputDirs = true
+        excludeDirs += file('./minecraft')
+    }
+}
+
+minecraft {
+    version = '1.7.10-10.13.4.1614-1.7.10'
+    runDir = 'minecraft'
+}
+
+dependencies {
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+jar {
+    manifest {
+        attributes 'FMLCorePluginContainsFMLMod': 'true'
+        attributes 'FMLCorePlugin': 'mods.example.LoadingPlugin'
+    }
+}
+
+tasks.register('devJar', Jar) {
+    archiveClassifier.set('dev')
+    manifest = jar.manifest
+    from sourceSets.main.output
+}
+
+artifacts {
+    archives devJar
+}
