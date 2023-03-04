@@ -2,8 +2,8 @@ package me.theandrey.objectstream.asm;
 
 import java.io.File;
 import java.util.Map;
-import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 import me.theandrey.objectstream.Config;
+import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 
 @IFMLLoadingPlugin.SortingIndex(2000)
 @IFMLLoadingPlugin.TransformerExclusions("me.theandrey.objectstream.asm.")

@@ -1,4 +1,4 @@
-# ObjectStream Blocker for Minecraft 1.7.10
+# ObjectStream Blocker for Minecraft 1.12.2
 
 Этот мод-патчер препятствует эксплуатации RCE-уязвимостей в модификациях с использованием `ObjectInputStream` (_десериализация объекта_).
 
