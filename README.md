@@ -1,8 +1,12 @@
 # ObjectStream Blocker for Minecraft 1.12.2
 
-Этот мод-патчер препятствует эксплуатации RCE-уязвимостей в модификациях с использованием `ObjectInputStream` (_десериализация объекта_).
+This very simple mod-patcher prevents the exploitation of vulnerabilities in MC mods using `ObjectInputStream` aka IOS (_deserialization of the object_).
 
-> Не является фиксом. Это средство безопасности: может нарушать работу некоторых функций модов и приводить к крашам игры.
+> It's not a fix. This is a security tool: it disables potentially unsafe code, giving you more time to understand and fix the vulnerability in the mod code.
 
-## Как это работает?
-Мод сканирует каждый класс на предмет использования `ObjectInputStream` и производит автоматическую замену на класс-заглушку. Для удобства, при обнаружении случаев использования **OIS**, в лог выводится сообщение `SECURITY ALERT Detected usage of ObjectInputStream`, чтобы Вы знали какие модификации игры имеют проблемы с безопасностью и требуют исправления.
+## How it works?
+
+The mod scans each class for usages of `ObjectInputStream` and makes an automatic replacement with a stub class. When cases of using OIS are detected, a message is displayed in the log: `SECURITY ALERT Detected usage of ObjectInputStream`, so that
+you know which game modifications have security issues and need to be fixed.
+
+By default, the mod makes substitutions wherever it finds unwanted code. You can add exceptions in the configuration file to allow the use of **OIS**, where it is needed.
