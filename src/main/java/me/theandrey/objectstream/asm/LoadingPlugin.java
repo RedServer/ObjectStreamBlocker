@@ -6,7 +6,7 @@ import me.theandrey.objectstream.Config;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 
 @IFMLLoadingPlugin.SortingIndex(2000)
-@IFMLLoadingPlugin.TransformerExclusions("me.theandrey.objectstream.asm.")
+@IFMLLoadingPlugin.TransformerExclusions("me.theandrey.objectstream.")
 public class LoadingPlugin implements IFMLLoadingPlugin {
 
     public LoadingPlugin() {

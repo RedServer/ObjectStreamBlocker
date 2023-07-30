@@ -24,4 +24,8 @@ public final class ASMHelper {
         return Type.getType('L' + name.replace('.', '/') + ';');
     }
 
+    public static String className(ClassNode node) {
+        return node.name.replace('/', '.');
+    }
+
 }
